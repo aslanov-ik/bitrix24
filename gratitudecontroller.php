@@ -1,5 +1,9 @@
 <?php
 
+/**
+ * @author Andrei Nikolaev <gromdron@yandex.ru>
+ */
+
 namespace Mi\Report\Controllers;
 
 use Bitrix\Blog;
