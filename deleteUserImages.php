@@ -2,7 +2,7 @@
 
 /**
  * Скрипт удаляет аватарки пользователей и картинки групповых чатов.
- * Полезно для локально развёрнутого проекта, для которого не скачивалась папка upload 
+ * Полезно для локально развёрнутого проекта, для которого не скачивалась папка upload с боевого портала.
  */
 
 define("NO_KEEP_STATISTIC", true);
@@ -19,8 +19,15 @@ use Bitrix\Main\UserTable;
 
 Loader::includeModule('crm');
 
-print_r('User avatars:' . deleteUserAvatars() . PHP_EOL);
-print_r('Group chat photos:' . deleteGroupChatPhotos());
+print_r(
+    json_encode(
+        [
+            'User avatars' => deleteUserAvatars(),
+            'Group chat photos' => deleteGroupChatPhotos()
+        ],
+        JSON_PRETTY_PRINT
+    )
+);
 
 function deleteUserAvatars(): bool|string
 {
